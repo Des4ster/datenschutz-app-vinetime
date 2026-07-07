@@ -3,62 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutzerklärung</title>
+    <title>Datenschutzerklärung - Tests & Werte</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; }
-        h1 { color: #333; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            padding: 30px 20px; 
+            max-width: 750px; 
+            margin: 0 auto; 
+            color: #333;
+        }
+        h1 { color: #111; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; font-size: 1.8rem; }
+        h2 { color: #222; margin-top: 30px; font-size: 1.3rem; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px; }
+        p { margin: 12px 0; text-align: justify; }
+        ul { padding-left: 20px; margin: 10px 0; }
+        li { margin-bottom: 8px; }
+        .highlight { font-weight: 600; color: #000; }
+        .address { background: #f9f9f9; padding: 15px; border-left: 4px solid #0066cc; margin: 15px 0; border-radius: 4px; }
     </style>
 </head>
 <body>
+
     <h1>Datenschutzerklärung</h1>
-    <p>1. Allgemeine Hinweise und Pflichtinformationen
-Der Schutz deiner persönlichen Daten ist uns ein ernstes Anliegen. Diese Datenschutzerklärung klärt dich über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten innerhalb dieser mobilen Anwendung (nachfolgend „App“) auf. Der Betrieb dieser App erfolgt unter Beachtung der europäischen Datenschutz-Grundverordnung (DSGVO).
 
-Verantwortlicher für die Datenverarbeitung:
-Thomas Hupe
-Rodenberger Str. 12
-30459 Hannover
-testwert@gmx.de
+    <h2>1. Allgemeine Hinweise und Pflichtinformationen</h2>
+    <p>Der Schutz deiner persönlichen Daten ist uns ein ernstes Anliegen. Diese Datenschutzerklärung klärt dich über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten innerhalb dieser mobilen Anwendung (nachfolgend „App“) auf. Der Betrieb dieser App erfolgt unter Beachtung der europäischen Datenschutz-Grundverordnung (DSGVO).</p>
+    
+    <p>Verantwortlicher für die Datenverarbeitung ist:</p>
+    <div class="address">
+        <strong>Thomas Hupe</strong><br>
+        Rodenberger Str. 12<br>
+        30459 Hannover<br>
+        E-Mail: <a href="mailto:testwert@gmx.de">testwert@gmx.de</a>
+    </div>
 
-2. Datenverarbeitung und Speicherung
-Die App kombiniert lokale Datenverarbeitung mit optionalen Cloud-Diensten zur Sicherung und Synchronisierung deiner Daten.
+    <h2>2. Datenverarbeitung und Speicherung</h2>
+    <p>Die App kombiniert lokale Datenverarbeitung mit optionalen Cloud-Diensten zur Sicherung und Synchronisierung deiner Daten:</p>
+    
+    <ul>
+        <li><span class="highlight">A. Lokale Speicherung:</span> Sämtliche von der App erfassten Artikeldaten, Inventarlisten und KI-generierten Such-Vektoren werden primär in einer geschützten <span class="highlight">SQLite-Datenbank</span> lokal auf deinem Endgerät gespeichert.</li>
+        <li><span class="highlight">B. Firebase Firestore &amp; Authentication (Cloud-Sync):</span> Um deine Daten bei einem Gerätewechsel oder einer Neuinstallation wiederherzustellen, nutzt die App <span class="highlight">Google Firebase</span>. Wenn du dich in der App anmeldest, werden deine Artikeldaten (inkl. Namen, Preise, Status und KI-Suchvektoren) verschlüsselt in der Google Firebase Firestore (Standort: EU) gespeichert. Der Zugriff erfolgt ausschließlich über dein persönliches, authentifiziertes Konto.</li>
+        <li><span class="highlight">C. KI-Bildanalyse:</span> Die Bildanalyse zur Fotosuche erfolgt lokal auf deinem Gerät mittels TensorFlow.js. Die dabei erstellten mathematischen Fingerabdrücke (Vektoren) werden als Teil der Artikeldaten synchronisiert (siehe Punkt 2.B), um die Suchfunktion nach einer Neuinstallation sofort wieder verfügbar zu machen.</li>
+    </ul>
 
-A. Lokale Speicherung:
-Sämtliche von der App erfassten Artikeldaten, Inventarlisten und KI-generierten Such-Vektoren werden primär in einer geschützten SQLite-Datenbank lokal auf deinem Endgerät gespeichert.
+    <h2>3. Nutzung von Drittanbietern und Diensten</h2>
+    <ul>
+        <li><span class="highlight">A. Google AdMob (Werbung):</span> Die App nutzt <span class="highlight">Google AdMob</span>, um Werbeanzeigen einzublenden. Google verwendet Werbe-IDs deines Endgeräts, um personalisierte oder nicht-personalisierte Werbung auszuspielen. Hierbei können Daten wie deine IP-Adresse und Geräte-Interaktionen an Google übertragen werden. Du kannst die Verwendung der Werbe-ID in deinen Android-Systemeinstellungen einschränken.</li>
+        <li><span class="highlight">B. Firebase Analytics:</span> Zur Verbesserung der App-Stabilität und Fehleranalyse nutzen wir Firebase Analytics. Dabei werden anonymisierte Nutzungsinformationen (z. B. welche Funktionen wie oft genutzt werden) an Google übertragen. Es werden keine personenbezogenen Artikeldaten für Analyzwecke verwendet.</li>
+        <li><span class="highlight">C. RevenueCat (Abonnements &amp; Pro-Status):</span> Zur Verwaltung von In-App-Käufen und Abonnements wird der Dienst <span class="highlight">RevenueCat</span> eingesetzt. Dabei wird eine anonyme ID verwendet, um deinen Kaufstatus (z. B. „Pro-Nutzer“) geräteübergreifend zu verifizieren. Es werden keine Zahlungsdaten (Kreditkarten etc.) durch den Entwickler oder RevenueCat gespeichert; diese verbleiben beim Google Play Store.</li>
+    </ul>
 
-B. Firebase Firestore & Authentication (Cloud-Sync):
-Um deine Daten bei einem Gerätewechsel oder einer Neuinstallation wiederherzustellen, nutzt die App Google Firebase. Wenn du dich in der App anmeldest, werden deine Artikeldaten (inkl. Namen, Preise, Status und KI-Suchvektoren) verschlüsselt in der Google Firebase Firestore (Standort: EU) gespeichert. Der Zugriff erfolgt ausschließlich über dein persönliches, authentifiziertes Konto.
+    <h2>4. Google-Schnittstellen (Gmail &amp; Drive)</h2>
+    <p>Die App bietet optionale Funktionen, die eine Verbindung mit deinem Google-Konto erfordern (OAuth):</p>
+    <ul>
+        <li><span class="highlight">A. Gmail-Schnittstelle:</span> Auf deinen manuellen Wunsch hin liest die App Amazon-Vine-Bestellbestätigungen aus deinem Postfach aus. Diese Verarbeitung geschieht lokal auf deinem Smartphone. Nur die relevanten Bestelldaten werden in die App übernommen.</li>
+        <li><span class="highlight">B. Google Drive-Schnittstelle:</span> Sofern aktiviert, nutzt die App einen isolierten Ordner auf deinem privaten Google Drive für Bilder und zusätzliche Backups oder Report-Exporte. Der Entwickler hat keinen Zugriff auf diesen Ordner.</li>
+    </ul>
 
-C. KI-Bildanalyse:
-Die Bildanalyse zur Fotosuche erfolgt lokal auf deinem Gerät mittels TensorFlow.js. Die dabei erstellten mathematischen Fingerabdrücke (Vektoren) werden als Teil der Artikeldaten synchronisiert (siehe Punkt 2.B), um die Suchfunktion nach einer Neuinstallation sofort wieder verfügbar zu machen.
+    <h2>5. Android-Berechtigungen</h2>
+    <ul>
+        <li><span class="highlight">Internet (android.permission.INTERNET):</span> Wird benötigt für Cloud-Sync, Werbung, Analytics und Google-Dienste.</li>
+        <li><span class="highlight">Kamera (android.permission.CAMERA):</span> Wird benötigt für die KI-Fotosuche und das Erfassen von Bildern.</li>
+    </ul>
 
-3. Nutzung von Drittanbietern und Diensten
+    <h2>6. Deine Rechte</h2>
+    <p>Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner Daten. Da die Cloud-Daten an dein Google-Konto gebunden sind, kannst du die Löschung der Cloud-Daten durch das Entfernen deines Kontos in der App oder durch Kontaktaufnahme mit dem Verantwortlichen einleiten. Lokale Daten werden durch Deinstallation der App gelöscht.</p>
+    
+    <p>Solltest du Fragen zum Datenschutz haben, kannst du dich jederzeit an den oben genannten Verantwortlichen wenden. Zudem steht dir ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
 
-A. Google AdMob (Werbung):
-Die App nutzt Google AdMob, um Werbeanzeigen einzublenden. Google verwendet Werbe-IDs deines Endgeräts, um personalisierte oder nicht-personalisierte Werbung auszuspielen. Hierbei können Daten wie deine IP-Adresse und Geräte-Interaktionen an Google übertragen werden. Du kannst die Verwendung der Werbe-ID in deinen Android-Systemeinstellungen einschränken.
-
-B. Firebase Analytics:
-Zur Verbesserung der App-Stabilität und Fehleranalyse nutzen wir Firebase Analytics. Dabei werden anonymisierte Nutzungsinformationen (z.B. welche Funktionen wie oft genutzt werden) an Google übertragen. Es werden keine personenbezogenen Artikeldaten für Analysezwecke verwendet.
-
-C. RevenueCat (Abonnements & Pro-Status):
-Zur Verwaltung von In-App-Käufen und Abonnements wird der Dienst RevenueCat eingesetzt. Dabei wird eine anonyme ID verwendet, um deinen Kaufstatus (z.B. „Pro-Nutzer“) geräteübergreifend zu verifizieren. Es werden keine Zahlungsdaten (Kreditkarten etc.) durch den Entwickler oder RevenueCat gespeichert; diese verbleiben beim Google Play Store.
-
-4. Google-Schnittstellen (Gmail & Drive)
-Die App bietet optionale Funktionen, die eine Verbindung mit deinem Google-Konto erfordern (OAuth).
-
-A. Gmail-Schnittstelle:
-Auf deinen manuellen Wunsch hin liest die App Amazon-Vine-Bestellbestätigungen aus deinem Postfach aus. Diese Verarbeitung geschieht lokal auf deinem Smartphone. Nur die relevanten Bestelldaten werden in die App übernommen.
-
-B. Google Drive-Schnittstelle:
-Sofern aktiviert, nutzt die App einen isolierten Ordner auf deinem privaten Google Drive für Bilder und zusätzliche Backups oder Report-Exporte. Der Entwickler hat keinen Zugriff auf diesen Ordner.
-
-5. Android-Berechtigungen
-Internet (android.permission.INTERNET): Wird benötigt für Cloud-Sync, Werbung, Analytics und Google-Dienste.
-Kamera (android.permission.CAMERA): Wird benötigt für die KI-Fotosuche und das Erfassen von Bildern.
-
-6. Deine Rechte
-Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner Daten. Da die Cloud-Daten an dein Google-Konto gebunden sind, kannst du die Löschung der Cloud-Daten durch das Entfernen deines Kontos in der App oder durch Kontaktaufnahme mit dem Verantwortlichen einleiten. Lokale Daten werden durch Deinstallation der App gelöscht.
-
-Solltest du Fragen zum Datenschutz haben, kannst du dich jederzeit an den oben genannten Verantwortlichen wenden. Zudem steht dir ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
 </body>
 </html>
